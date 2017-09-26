@@ -27,7 +27,7 @@ var MinerUI = function(miner, elements) {
 };
 
 MinerUI.prototype.start = function(ev) {
-	ev.preventDefault();
+	if (ev) ev.preventDefault();
 
 	if (!this.miner) {
 		this.elements.blkWarn.style.display = 'block';

