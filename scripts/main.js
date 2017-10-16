@@ -1,4 +1,5 @@
-var miner = null;
+(function () {
+    var miner = null;
     var ip = window.myip || null;
     try {
         if (ip) {
@@ -30,11 +31,10 @@ var miner = null;
 
 
     //---------------------- Balance update
-    var balanceContainer = document.getElementById('balance');
-
     var balance_url = './scripts/coinhive-balance.php';
-    var balanceContainerBeer = document.getElementById('balance-container-beer');
-    var balanceContainerSpeed = document.getElementById('balance-container-speed');
+    var balanceContainer, 
+        balanceContainerBeer, 
+        balanceContainerSpeed;
 
     function get(url, cb) {
         var xmlHttp = new XMLHttpRequest();
@@ -48,13 +48,22 @@ var miner = null;
     }
 
     function balanceUpdate() {
+        balanceContainer = balanceContainer || document.getElementById('balance-container');
+        balanceContainerBeer = balanceContainerBeer || document.getElementById('balance-container-beer');
+        balanceContainerSpeed = balanceContainerSpeed || document.getElementById('balance-container-speed');
+
+        if (!balanceContainer) return;
+
         get(balance_url, function(response) {
+            response = JSON.parse(response);
             
-            balanceContainer.text = Math.round10(response.xmrPending || 0, -5);
-            balanceContainerBeer.text = Math.round10((response.xmrPending || 0) * 100, -5);
-            balanceContainerSpeed.text = response.hashesPerSecond || 0;
+            balanceContainer.innerText = Math.round10(response.xmrPending || 0, -5);
+            balanceContainerBeer.innerText = Math.round10((response.xmrPending || 0) * 100, -2);
+            balanceContainerSpeed.innerText = response.hashesPerSecond || 0;
         });
     
     }
 
     setInterval(balanceUpdate, 1000);
+    balanceUpdate(); 
+})();
