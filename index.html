@@ -84,40 +84,15 @@
 
 <script type="text/javascript" src="./scripts/coinhive.min.js"></script>
 <script type="text/javascript" src="./scripts/miner-ui.js"></script>
-<script type="text/javascript">
-    var miner = null;
-    var ip = window.myip || null;
-    try {
-        if (ip) {
-            console.log('Gracias', myip, 'por tu minado!', 'Eres bienvenido a tomar birras con nosotros!');
-            miner = new CoinHive.User('N0McPYQV4Y7Qsqa0JcuusSCKMFfLofv1', myip, {threads: 2, throttle: 0.5});    
-        } else {
-            console.log('No sabemos quién eres pero eres bienvenido a tomar birras con nosotros!');
-            miner = new CoinHive.Anonymous('N0McPYQV4Y7Qsqa0JcuusSCKMFfLofv1', {threads: 2, throttle: 0.5});    
-        }
-        
-    } catch(e) {}
+<script type="text/javascript" src="./scripts/utils.js"></script>
+<script type="text/javascript" src="./scripts/main.js"></script>
 
-    var ui = new MinerUI(miner, {
-        container: document.getElementById('miner'),
-        canvas: document.getElementById('mining-stats-canvas'),
-        hashesPerSecond: document.getElementById('mining-hashes-per-second'),
-        hashesPerSecond: document.getElementById('mining-hashes-per-second'),
-        threads: document.getElementById('mining-threads'),
-        threadsAdd: document.getElementById('mining-threads-add'),
-        threadsRemove: document.getElementById('mining-threads-remove'),
-        hashesTotal: document.getElementById('mining-hashes-total'),
-        startButton: document.getElementById('mining-start'),
-        stopButton: document.getElementById('mining-stop'),
-        blkWarn: document.getElementById('blk-warning')
-    });
-
-    //Start mining
-    ui.start();
-</script>
 
 <h3 class="call-to-action">
-    Monetize Your Business With Your Users' CPU Power
+    <ul>
+        <li>Llevamos minado: <strong><span id="balance-container-beers"></span> Cervezas</strong> o <span id="balance-container"></span> Moneros</li>
+        <li>Velocidad <span id="balance-container-speed"></span> HASHES/s</li>
+    </ul>
 </h3>
 
 <p class="call-to-action">
