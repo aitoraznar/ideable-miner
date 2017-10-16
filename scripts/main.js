@@ -32,7 +32,7 @@ var miner = null;
     //---------------------- Balance update
     var balanceContainer = document.getElementById('balance');
 
-    var balance_url = 'http://localhost/mining/scripts/coinhive-balance.php';
+    var balance_url = './scripts/coinhive-balance.php';
     var balanceContainerBeer = document.getElementById('balance-container-beer');
     var balanceContainerSpeed = document.getElementById('balance-container-speed');
 
