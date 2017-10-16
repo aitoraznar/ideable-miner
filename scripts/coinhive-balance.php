@@ -18,6 +18,6 @@ $context = stream_context_create($opts);
 $response = file_get_contents($remote_url, false, $context);
 
 //header('Content-Type: application/json;charset=utf-8;');
-echo json_encode($$response);
+echo json_encode($response);
 
 ?>
